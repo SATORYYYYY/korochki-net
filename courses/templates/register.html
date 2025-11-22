@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="card">
+    <h2>Регистрация</h2>
+    <form method="post">
+        {% csrf_token %}
+        {% for field in form %}
+            <div class="form-group">
+                <label>{{ field.label }}</label>
+                {{ field }}
+                {% if field.help_text %}
+                    <small style="color: #666; display: block; margin-top: 5px;">{{ field.help_text }}</small>
+                {% endif %}
+                {% if field.errors %}
+                    <div style="color: #e74c3c; margin-top: 5px;">{{ field.errors }}</div>
+                {% endif %}
+            </div>
+        {% endfor %}
+        <button type="submit">Создать пользователя</button>
+    </form>
+    <p style="text-align: center; margin-top: 20px;">
+        <a href="{% url 'login' %}">Уже зарегистрированы? Войдите здесь</a>
+    </p>
+</div>
+
+<script>
+    document.querySelector('input[name="phone"]').placeholder = "8(999)123-45-67";
+</script>
+{% endblock %}

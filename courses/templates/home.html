@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="card" style="text-align: center;">
+    <h2>Добро пожаловать на портал "Корочки.есть"!</h2>
+    <p>Запишитесь на курсы дополнительного профессионального образования</p>
+    
+    {% if not user.is_authenticated %}
+        <a href="{% url 'register' %}"><button>Зарегистрироваться</button></a>
+        <a href="{% url 'login' %}"><button style="background: #27ae60;">Войти</button></a>
+    {% else %}
+        <a href="{% url 'create_application' %}"><button>Подать заявку на обучение</button></a>
+    {% endif %}
+</div>
+
+<div class="card">
+    <h3 style="text-align: center;">Наши популярные курсы</h3>
+    <div class="slider">
+        <div class="slides">
+            <div class="slide"><img src="{% static 'images/slide1.jpg' %}" alt="Курс программирования"></div>
+            <div class="slide"><img src="{% static 'images/slide2.jpg' %}" alt="Курс дизайна"></div>
+            <div class="slide"><img src="{% static 'images/slide3.jpg' %}" alt="Курс баз данных"></div>
+            <div class="slide"><img src="{% static 'images/slide4.jpg' %}" alt="Онлайн обучение"></div>
+        </div>
+    </div>
+</div>
+{% endblock %}

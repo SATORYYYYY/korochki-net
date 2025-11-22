@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="card">
+    <h2>Мои заявки</h2>
+    <a href="{% url 'create_application' %}"><button>Подать новую заявку</button></a>
+    
+    {% if applications %}
+    <table style="margin-top: 20px;">
+        <tr>
+            <th>Курс</th>
+            <th>Дата начала</th>
+            <th>Способ оплаты</th>
+            <th>Статус</th>
+            <th>Действия</th>
+        </tr>
+        {% for app in applications %}
+        <tr>
+            <td>{{ app.course.name }}</td>
+            <td>{{ app.desired_start_date }}</td>
+            <td>{{ app.get_payment_method_display }}</td>
+            <td style="color: {% if app.status == 'new' %}#e74c3c{% elif app.status == 'in_progress' %}#f39c12{% else %}#27ae60{% endif %}; font-weight: bold;">
+                {{ app.get_status_display }}
+            </td>
+            <td>
+                {% if app.status == 'completed' %}
+                    {% if app.has_review %}
+                        <span style="color: #27ae60;">Отзыв оставлен</span>
+                    {% else %}
+                        <a href="{% url 'create_review' app.id %}">Оставить отзыв</a>
+                    {% endif %}
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+    <p style="text-align: center; margin: 20px 0;">У вас пока нет заявок на обучение.</p>
+    {% endif %}
+</div>
+{% endblock %}

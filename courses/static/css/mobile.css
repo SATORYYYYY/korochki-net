@@ -1,0 +1,65 @@
+.container {
+    padding: 0 15px;
+}
+
+.header {
+    padding: 0.5rem 0;
+}
+
+.logo {
+    font-size: 1.5rem;
+}
+
+.tagline {
+    font-size: 0.9rem;
+}
+
+.nav {
+    padding: 0.5rem 0;
+}
+
+.nav a {
+    display: block;
+    margin: 0.25rem 0;
+    text-align: center;
+}
+
+.logout {
+    float: none;
+}
+
+.card {
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+.btn {
+    width: 100%;
+    margin: 0.25rem 0;
+}
+
+.table {
+    font-size: 0.8rem;
+}
+
+.table th,
+.table td {
+    padding: 0.5rem;
+}
+
+.slider {
+    margin: 1rem auto;
+}
+
+.slide img {
+    height: 200px;
+}
+
+.slider-btn {
+    padding: 0.5rem;
+    font-size: 1rem;
+}
+
+.form-control {
+    font-size: 16px; 
+}
